@@ -34,7 +34,7 @@ export function ResumeToolbar({ shareUrl }: ResumeToolbarProps): React.ReactElem
       URL.revokeObjectURL(url);
     } catch (err) {
       // Log error for debugging, fallback to browser print
-       
+
       console.error('PDF generation failed:', err);
       window.print();
     } finally {
