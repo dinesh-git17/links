@@ -87,7 +87,18 @@ describe('Root Layout Viewport', () => {
     expect(viewport).toBeDefined();
     expect(viewport.width).toBe('device-width');
     expect(viewport.initialScale).toBe(1);
-    expect(viewport.themeColor).toBe('#050505');
+    expect(viewport.themeColor).toBeDefined();
+    expect(Array.isArray(viewport.themeColor)).toBe(true);
+    const themeColors = viewport.themeColor as Array<{ media: string; color: string }>;
+    expect(themeColors).toHaveLength(2);
+    expect(themeColors[0]).toEqual({
+      media: '(prefers-color-scheme: light)',
+      color: '#fafafa',
+    });
+    expect(themeColors[1]).toEqual({
+      media: '(prefers-color-scheme: dark)',
+      color: '#050505',
+    });
   });
 });
 

@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/Skeleton';
 export default function Loading(): React.ReactElement {
   return (
     <div
-      className="flex min-h-dvh items-center justify-center bg-[#050505]"
+      className="flex min-h-dvh items-center justify-center bg-[color:var(--background)]"
       role="status"
       aria-busy="true"
     >
@@ -30,12 +30,12 @@ export default function Loading(): React.ReactElement {
           </section>
 
           {/* Primary CTA Skeleton */}
-          <Skeleton width="100%" height="56px" radius="xl" className="bg-white/10" />
+          <Skeleton width="100%" height="56px" radius="xl" />
 
           {/* Project Cards Skeleton */}
           <section className="flex flex-col gap-4">
             {/* Card 1 */}
-            <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-[#0A0A0A] p-4">
+            <div className="flex flex-col gap-3 rounded-xl border border-[color:var(--card-border)] bg-[color:var(--card-surface)] p-4">
               <div className="flex items-center gap-3">
                 {/* Icon */}
                 <Skeleton width="40px" height="40px" radius="lg" />
@@ -53,7 +53,7 @@ export default function Loading(): React.ReactElement {
             </div>
 
             {/* Card 2 */}
-            <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-[#0A0A0A] p-4">
+            <div className="flex flex-col gap-3 rounded-xl border border-[color:var(--card-border)] bg-[color:var(--card-surface)] p-4">
               <div className="flex items-center gap-3">
                 {/* Icon */}
                 <Skeleton width="40px" height="40px" radius="lg" />

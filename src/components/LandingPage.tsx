@@ -9,6 +9,7 @@ import { AnimatedCTA } from './AnimatedCTA';
 import { AnimatedProjectCard } from './AnimatedProjectCard';
 import { AnimatedSocialGrid } from './AnimatedSocialGrid';
 import { StatusIndicator } from './StatusIndicator';
+import { ThemeToggle } from './ThemeToggle';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -68,7 +69,8 @@ export function LandingPage({ projects }: LandingPageProps): React.ReactElement 
   const activeAvatarVariants = shouldReduceMotion ? reducedMotionVariants : avatarVariants;
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-[#050505]">
+    <div className="flex min-h-dvh items-center justify-center bg-[color:var(--background)]">
+      <ThemeToggle />
       <motion.main
         className="flex min-h-dvh w-full max-w-[430px] flex-col gap-8 px-6 py-12"
         variants={activeContainerVariants}
@@ -78,7 +80,7 @@ export function LandingPage({ projects }: LandingPageProps): React.ReactElement 
         {/* Skip Navigation Link */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[color:var(--btn-primary-bg)] focus:px-4 focus:py-2 focus:text-[color:var(--btn-primary-text)]"
         >
           Skip to main content
         </a>
@@ -96,8 +98,10 @@ export function LandingPage({ projects }: LandingPageProps): React.ReactElement 
 
             {/* Identity - Step 2 */}
             <motion.div className="flex flex-col gap-1" variants={activeItemVariants}>
-              <h1 className="text-2xl font-bold text-white">Dinesh</h1>
-              <p className="text-sm text-gray-400">I make computers do fun and useful things.</p>
+              <h1 className="text-2xl font-bold text-[color:var(--text-primary)]">Dinesh</h1>
+              <p className="text-sm text-[color:var(--text-secondary)]">
+                I make computers do fun and useful things.
+              </p>
             </motion.div>
 
             {/* Status */}

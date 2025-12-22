@@ -9,3 +9,6 @@ export { type SkeletonProps } from './Skeleton';
 export { SocialGrid } from './SocialGrid';
 export { StatusIndicator } from './StatusIndicator';
 export { type StatusIndicatorProps } from './StatusIndicator';
+export { ThemeProvider } from './ThemeProvider';
+export { type ThemeProviderProps } from './ThemeProvider';
+export { ThemeToggle } from './ThemeToggle';

@@ -3,6 +3,8 @@
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useState, useCallback } from 'react';
 
+import { ThemeToggle } from './ThemeToggle';
+
 const EMAIL = 'info@dineshd.dev';
 
 const containerVariants: Variants = {
@@ -120,7 +122,8 @@ export function ContactPage(): React.ReactElement {
   }, []);
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-[#050505]">
+    <div className="flex min-h-dvh items-center justify-center bg-[color:var(--background)]">
+      <ThemeToggle />
       <motion.main
         className="flex min-h-dvh w-full max-w-[430px] flex-col px-6 pb-24 pt-12"
         variants={containerVariants}
@@ -130,7 +133,7 @@ export function ContactPage(): React.ReactElement {
         {/* Skip Navigation Link */}
         <a
           href="#contact-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[color:var(--btn-primary-bg)] focus:px-4 focus:py-2 focus:text-[color:var(--btn-primary-text)]"
         >
           Skip to main content
         </a>
@@ -139,7 +142,7 @@ export function ContactPage(): React.ReactElement {
           {/* Back Button */}
           <motion.a
             href="/"
-            className="mb-6 flex h-10 w-10 items-center justify-center rounded-full text-zinc-500 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black"
+            className="mb-6 flex h-10 w-10 items-center justify-center rounded-full text-[color:var(--icon-color)] transition-colors hover:text-[color:var(--icon-color-hover)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
             variants={headerVariants}
             whileTap={{ scale: 0.9 }}
             aria-label="Go back to home"
@@ -162,19 +165,21 @@ export function ContactPage(): React.ReactElement {
 
           {/* Section 1: Header */}
           <motion.header variants={headerVariants}>
-            <h1 className="text-4xl font-bold text-[#EDEDED]">Contact</h1>
-            <p className="mt-2 text-base text-zinc-400">Let&apos;s build something useful.</p>
+            <h1 className="text-4xl font-bold text-[color:var(--text-primary)]">Contact</h1>
+            <p className="mt-2 text-base text-[color:var(--text-secondary)]">
+              Let&apos;s build something useful.
+            </p>
           </motion.header>
 
           {/* Gradient Divider */}
           <motion.div
-            className="my-8 h-[1px] w-full origin-left bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"
+            className="my-8 h-[1px] w-full origin-left bg-gradient-to-r from-transparent via-[color:var(--accent-cyan)]/20 to-transparent"
             variants={dividerVariants}
           />
 
           {/* Section 2: Primary Contact Card */}
           <motion.section
-            className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 shadow-[0_0_30px_rgba(6,182,212,0.05)]"
+            className="rounded-2xl border border-[color:var(--card-border)] bg-[color:var(--card-surface)] p-6 shadow-sm"
             variants={cardVariants}
             aria-labelledby="contact-card-heading"
           >
@@ -184,19 +189,21 @@ export function ContactPage(): React.ReactElement {
 
             <div className="flex flex-col gap-4">
               {/* Label */}
-              <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+              <span className="text-xs font-medium uppercase tracking-wider text-[color:var(--text-muted)]">
                 Direct Email
               </span>
 
               {/* Email Value */}
-              <span className="select-all font-mono text-xl text-white">{EMAIL}</span>
+              <span className="select-all font-mono text-xl text-[color:var(--text-primary)]">
+                {EMAIL}
+              </span>
 
               {/* Action Row */}
               <div className="mt-2 grid grid-cols-[1fr_auto] gap-3">
                 {/* Primary Button: Email Me */}
                 <motion.a
                   href={`mailto:${EMAIL}`}
-                  className="flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-base font-semibold text-black transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black"
+                  className="flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-[color:var(--btn-primary-bg)] px-6 py-3 text-base font-semibold text-[color:var(--btn-primary-text)] transition-colors focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
@@ -221,7 +228,7 @@ export function ContactPage(): React.ReactElement {
                 <motion.button
                   type="button"
                   onClick={handleCopy}
-                  className="flex h-[50px] w-[50px] items-center justify-center rounded-xl bg-white/5 transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black"
+                  className="flex h-[50px] w-[50px] items-center justify-center rounded-xl bg-[color:var(--btn-secondary-bg)] transition-colors hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                   aria-label="Copy email address"
@@ -239,7 +246,7 @@ export function ContactPage(): React.ReactElement {
                     </svg>
                   ) : (
                     <svg
-                      className="h-5 w-5 text-white"
+                      className="h-5 w-5 text-[color:var(--btn-secondary-text)]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -270,7 +277,7 @@ export function ContactPage(): React.ReactElement {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-12 w-12 items-center justify-center rounded-full text-zinc-500 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black"
+                className="flex h-12 w-12 items-center justify-center rounded-full text-[color:var(--icon-color)] transition-colors hover:text-[color:var(--icon-color-hover)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
                 whileTap={{ scale: 0.9 }}
                 aria-label={link.ariaLabel}
               >
@@ -282,14 +289,14 @@ export function ContactPage(): React.ReactElement {
 
         {/* Section 4: Footer */}
         <motion.footer className="mt-auto pb-safe text-center" variants={socialVariants}>
-          <p className="text-[13px] text-zinc-600">I read everything.</p>
+          <p className="text-[13px] text-[color:var(--text-muted)]">I read everything.</p>
         </motion.footer>
 
         {/* Toast Notification */}
         <AnimatePresence>
           {showToast && (
             <motion.div
-              className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/80 px-4 py-2 text-sm text-white backdrop-blur-sm"
+              className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-[color:var(--toast-bg)] px-4 py-2 text-sm text-[color:var(--toast-text)] backdrop-blur-sm"
               variants={toastVariants}
               initial="hidden"
               animate="visible"

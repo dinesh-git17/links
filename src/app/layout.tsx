@@ -2,6 +2,8 @@ import { Analytics } from '@vercel/analytics/next';
 import { Inter } from 'next/font/google';
 import { Geist_Mono } from 'next/font/google';
 
+import { ThemeProvider } from '@/components/ThemeProvider';
+
 import type { Metadata, Viewport } from 'next';
 
 import './globals.css';
@@ -70,7 +72,10 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#050505',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
+    { media: '(prefers-color-scheme: dark)', color: '#050505' },
+  ],
 };
 
 export default function RootLayout({
@@ -79,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): React.ReactElement {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -102,7 +107,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>
     </html>

@@ -3,6 +3,8 @@
 import { motion, type Variants } from 'framer-motion';
 import Link from 'next/link';
 
+import { ThemeToggle } from './ThemeToggle';
+
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -33,7 +35,8 @@ const textVariants: Variants = {
 
 export function NotFoundPage(): React.ReactElement {
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-[#050505]">
+    <div className="flex min-h-dvh items-center justify-center bg-[color:var(--background)]">
+      <ThemeToggle />
       <motion.main
         className="flex w-full max-w-[430px] flex-col items-center px-6 text-center"
         variants={containerVariants}
@@ -44,7 +47,7 @@ export function NotFoundPage(): React.ReactElement {
         <motion.div className="relative" variants={heroVariants}>
           {/* Glow Effect */}
           <motion.div
-            className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+            className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[color:var(--accent-cyan)]/10 blur-3xl"
             animate={{
               opacity: [0.1, 0.2, 0.1],
             }}
@@ -58,12 +61,12 @@ export function NotFoundPage(): React.ReactElement {
 
           {/* 404 Text with Gradient */}
           <h1 className="relative font-mono text-8xl font-bold">
-            <span className="bg-gradient-to-r from-cyan-500 to-emerald-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[color:var(--accent-cyan)] to-[color:var(--accent-emerald)] bg-clip-text text-transparent">
               404
             </span>
             {/* Blinking Cursor */}
             <motion.span
-              className="inline-block bg-gradient-to-r from-cyan-500 to-emerald-500 bg-clip-text text-transparent"
+              className="inline-block bg-gradient-to-r from-[color:var(--accent-cyan)] to-[color:var(--accent-emerald)] bg-clip-text text-transparent"
               animate={{
                 opacity: [1, 1, 0, 0],
               }}
@@ -82,8 +85,10 @@ export function NotFoundPage(): React.ReactElement {
 
         {/* Section 2: The "Dev Humor" Message */}
         <motion.div variants={textVariants}>
-          <h2 className="mt-6 text-xl font-medium text-[#EDEDED]">Error: Route Undefined</h2>
-          <p className="mt-2 text-sm text-zinc-400">
+          <h2 className="mt-6 text-xl font-medium text-[color:var(--text-primary)]">
+            Error: Route Undefined
+          </h2>
+          <p className="mt-2 text-sm text-[color:var(--text-secondary)]">
             We searched the stack, but this page didn&apos;t render.
           </p>
         </motion.div>
@@ -92,7 +97,7 @@ export function NotFoundPage(): React.ReactElement {
         <motion.div className="mt-10 w-full" variants={textVariants}>
           <Link href="/" className="block">
             <motion.span
-              className="flex h-12 min-w-[200px] items-center justify-center rounded-lg bg-white font-mono text-base font-medium text-black transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black"
+              className="flex h-12 min-w-[200px] items-center justify-center rounded-lg bg-[color:var(--btn-primary-bg)] font-mono text-base font-medium text-[color:var(--btn-primary-text)] transition-colors focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}

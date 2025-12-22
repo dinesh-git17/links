@@ -14,7 +14,7 @@ export function AnimatedAvatar({ reduceMotion }: AnimatedAvatarProps): React.Rea
     <div className="relative">
       <AvatarGlow />
       <motion.div
-        className="relative h-24 w-24 overflow-hidden rounded-full border-2 border-white/10"
+        className="relative h-24 w-24 overflow-hidden rounded-full border-2 border-[color:var(--card-border)]"
         whileHover={reduceMotion ? undefined : { scale: 1.05 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
