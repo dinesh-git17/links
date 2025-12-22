@@ -25,6 +25,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  manifest: '/manifest.webmanifest',
   openGraph: {
     title: 'Dinesh | Senior Software Engineer',
     description:
@@ -33,12 +42,22 @@ export const metadata: Metadata = {
     siteName: 'Dinesh Links',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/og.jpeg',
+        width: 682,
+        height: 360,
+        alt: 'Dinesh - Senior Software Engineer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Dinesh | Senior Software Engineer',
     description:
       'Personal links hub for Dinesh - Senior Software Engineer building better digital experiences.',
+    images: ['/og.jpeg'],
+    creator: '@dinbuilds',
   },
   robots: {
     index: true,
@@ -71,11 +90,11 @@ export default function RootLayout({
               jobTitle: 'Senior Software Engineer',
               url: 'https://links.dineshd.dev',
               sameAs: [
-                'https://github.com/dinesh',
-                'https://linkedin.com/in/dinesh',
-                'https://x.com/dinesh',
-                'https://tiktok.com/@dinesh',
-                'https://youtube.com/@dinesh',
+                'https://github.com/dinesh-git17',
+                'https://www.linkedin.com/in/dineshsdawonauth/',
+                'https://x.com/dinbuilds',
+                'https://www.tiktok.com/@dinbuilds',
+                'https://www.youtube.com/@DinBuilds',
               ],
             }),
           }}
