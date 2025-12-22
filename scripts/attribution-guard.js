@@ -48,7 +48,10 @@ function shouldExclude(filepath) {
   if (EXCLUDED_FILES.has(basename)) return true;
 
   for (const dir of EXCLUDED_DIRS) {
-    if (filepath.includes(`${path.sep}${dir}${path.sep}`) || filepath.startsWith(`${dir}${path.sep}`)) {
+    if (
+      filepath.includes(`${path.sep}${dir}${path.sep}`) ||
+      filepath.startsWith(`${dir}${path.sep}`)
+    ) {
       return true;
     }
   }
