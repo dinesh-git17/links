@@ -8,6 +8,7 @@ import { AnimatedAvatar } from './AnimatedAvatar';
 import { AnimatedCTA } from './AnimatedCTA';
 import { AnimatedProjectCard } from './AnimatedProjectCard';
 import { AnimatedSocialGrid } from './AnimatedSocialGrid';
+import { LiveDemosPanel } from './LiveDemosPanel';
 import { StatusIndicator } from './StatusIndicator';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -154,9 +155,14 @@ export function LandingPage({ projects }: LandingPageProps): React.ReactElement 
               </motion.div>
             ))}
           </section>
+
+          {/* Live Demos Panel - Step 5 */}
+          <motion.div variants={activeItemVariants}>
+            <LiveDemosPanel reduceMotion={shouldReduceMotion ?? false} />
+          </motion.div>
         </div>
 
-        {/* Social Grid - Step 5 */}
+        {/* Social Grid - Step 6 */}
         <motion.footer className="mt-auto" variants={activeItemVariants}>
           <AnimatedSocialGrid reduceMotion={shouldReduceMotion ?? false} />
         </motion.footer>

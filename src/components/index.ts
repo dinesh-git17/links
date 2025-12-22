@@ -1,5 +1,7 @@
 export { AvatarGlow } from './AvatarGlow';
 export { HeroSection } from './HeroSection';
+export { LiveDemosPanel } from './LiveDemosPanel';
+export { type DemoLink, type LiveDemosPanelProps } from './LiveDemosPanel';
 export { PrimaryCTA } from './PrimaryCTA';
 export { type PrimaryCTAProps } from './PrimaryCTA';
 export { ProjectCard } from './ProjectCard';
