@@ -10,7 +10,7 @@ export function StatusIndicator({ statusText }: StatusIndicatorProps): React.Rea
   return (
     <div className="flex items-center gap-2">
       <motion.div
-        className="h-2 w-2 rounded-full bg-green-500"
+        className="h-2 w-2 rounded-full bg-[color:var(--status-green)]"
         animate={{
           opacity: [1, 0.4, 1],
         }}
@@ -21,7 +21,7 @@ export function StatusIndicator({ statusText }: StatusIndicatorProps): React.Rea
         }}
         aria-hidden="true"
       />
-      <span className="text-sm text-gray-400">{statusText}</span>
+      <span className="text-sm text-[color:var(--text-secondary)]">{statusText}</span>
     </div>
   );
 }

@@ -28,7 +28,7 @@ export function Skeleton({
 
   return (
     <motion.div
-      className={`bg-white/5 ${radiusMap[radius]} ${className}`}
+      className={`bg-[color:var(--skeleton-base)] ${radiusMap[radius]} ${className}`}
       style={{ width, height }}
       animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [1, 0.6, 1] }}
       transition={

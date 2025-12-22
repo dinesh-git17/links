@@ -4,6 +4,8 @@ import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
+import { ThemeToggle } from '@/components/ThemeToggle';
+
 export interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
@@ -49,10 +51,11 @@ export default function Error({ reset }: ErrorProps): React.ReactElement {
   }, []);
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-[#050505]">
+    <div className="flex min-h-dvh items-center justify-center bg-[color:var(--background)]">
+      <ThemeToggle />
       {/* Faint cyan glow behind content */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[color:var(--accent-cyan)]/10 blur-3xl"
         aria-hidden="true"
       />
 
@@ -64,12 +67,12 @@ export default function Error({ reset }: ErrorProps): React.ReactElement {
       >
         {/* Icon - Abstract warning symbol */}
         <motion.div
-          className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/5 bg-[#0A0A0A]"
+          className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-[color:var(--card-border)] bg-[color:var(--card-surface)]"
           variants={activeItemVariants}
           aria-hidden="true"
         >
           <svg
-            className="h-8 w-8 text-zinc-500"
+            className="h-8 w-8 text-[color:var(--icon-color)]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -88,20 +91,23 @@ export default function Error({ reset }: ErrorProps): React.ReactElement {
           ref={headingRef}
           role="alert"
           tabIndex={-1}
-          className="text-xl font-bold text-white outline-none"
+          className="text-xl font-bold text-[color:var(--text-primary)] outline-none"
           variants={activeItemVariants}
         >
           System Encountered an Error
         </motion.h1>
 
         {/* Body text */}
-        <motion.p className="mt-3 text-sm text-zinc-400" variants={activeItemVariants}>
+        <motion.p
+          className="mt-3 text-sm text-[color:var(--text-secondary)]"
+          variants={activeItemVariants}
+        >
           We caught a runtime exception. The issue has been automatically logged.
         </motion.p>
 
         {/* Dev accent badge */}
         <motion.span
-          className="mt-4 rounded-md border border-cyan-500/20 bg-cyan-500/5 px-3 py-1 font-mono text-xs text-cyan-500/70"
+          className="mt-4 rounded-md border border-[color:var(--accent-cyan)]/20 bg-[color:var(--accent-cyan)]/5 px-3 py-1 font-mono text-xs text-[color:var(--accent-cyan)]/70"
           variants={activeItemVariants}
         >
           Exception Caught
@@ -113,11 +119,11 @@ export default function Error({ reset }: ErrorProps): React.ReactElement {
           <motion.button
             type="button"
             onClick={reset}
-            className="flex h-12 w-full items-center justify-center rounded-lg bg-white text-base font-semibold text-black transition-shadow focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[#050505]"
+            className="flex h-12 w-full items-center justify-center rounded-lg bg-[color:var(--btn-primary-bg)] text-base font-semibold text-[color:var(--btn-primary-text)] transition-shadow focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
             whileHover={
               shouldReduceMotion
                 ? undefined
-                : { y: -1, boxShadow: '0 8px 30px rgba(255, 255, 255, 0.12)' }
+                : { y: -1, boxShadow: '0 8px 30px rgba(128, 128, 128, 0.12)' }
             }
             whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
@@ -128,7 +134,7 @@ export default function Error({ reset }: ErrorProps): React.ReactElement {
           {/* Secondary Action: Go Home */}
           <Link href="/" className="block">
             <motion.span
-              className="flex h-12 w-full items-center justify-center rounded-lg text-base font-medium text-zinc-400 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[#050505]"
+              className="flex h-12 w-full items-center justify-center rounded-lg text-base font-medium text-[color:var(--text-secondary)] transition-colors hover:text-[color:var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-cyan)] focus:ring-offset-2 focus:ring-offset-[color:var(--ring-offset)]"
               whileHover={shouldReduceMotion ? undefined : { y: -1 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}

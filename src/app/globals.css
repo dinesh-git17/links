@@ -1,13 +1,73 @@
 @import 'tailwindcss';
 
+/* Dark Mode (Default) */
 :root {
   --background: #050505;
   --foreground: #ededed;
   --card-surface: #0a0a0a;
   --card-border: rgba(255, 255, 255, 0.1);
+  --card-border-hover: rgba(255, 255, 255, 0.2);
   --accent-cyan: #06b6d4;
   --accent-emerald: #10b981;
+  --accent-cyan-dark: #0891b2;
+  --accent-emerald-dark: #059669;
   --status-green: #22c55e;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --btn-primary-bg: #ffffff;
+  --btn-primary-text: #000000;
+  --btn-secondary-bg: rgba(255, 255, 255, 0.1);
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-border: rgba(255, 255, 255, 0.1);
+  --skeleton-base: rgba(255, 255, 255, 0.05);
+  --skeleton-highlight: rgba(255, 255, 255, 0.1);
+  --ring-offset: #050505;
+  --ring-color: rgba(255, 255, 255, 0.5);
+  --glow-opacity: 0.5;
+  --icon-color: #9ca3af;
+  --icon-color-hover: #ffffff;
+  --badge-bg: transparent;
+  --badge-border: rgba(255, 255, 255, 0.1);
+  --badge-text: #9ca3af;
+  --divider: rgba(255, 255, 255, 0.1);
+  --toast-bg: rgba(0, 0, 0, 0.8);
+  --toast-text: #ffffff;
+}
+
+/* Light Mode */
+.light {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --card-surface: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-border-hover: rgba(0, 0, 0, 0.15);
+  --accent-cyan: #0891b2;
+  --accent-emerald: #059669;
+  --accent-cyan-dark: #0e7490;
+  --accent-emerald-dark: #047857;
+  --status-green: #22c55e;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --btn-primary-bg: #18181b;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #f4f4f5;
+  --btn-secondary-text: #18181b;
+  --btn-secondary-border: #e4e4e7;
+  --skeleton-base: #e4e4e7;
+  --skeleton-highlight: #f4f4f5;
+  --ring-offset: #fafafa;
+  --ring-color: rgba(0, 0, 0, 0.3);
+  --glow-opacity: 0.2;
+  --icon-color: #71717a;
+  --icon-color-hover: #18181b;
+  --badge-bg: #f4f4f5;
+  --badge-border: #e4e4e7;
+  --badge-text: #52525b;
+  --divider: #e4e4e7;
+  --toast-bg: rgba(255, 255, 255, 0.95);
+  --toast-text: #18181b;
 }
 
 @theme inline {
@@ -15,9 +75,32 @@
   --color-foreground: var(--foreground);
   --color-card-surface: var(--card-surface);
   --color-card-border: var(--card-border);
+  --color-card-border-hover: var(--card-border-hover);
   --color-accent-cyan: var(--accent-cyan);
   --color-accent-emerald: var(--accent-emerald);
+  --color-accent-cyan-dark: var(--accent-cyan-dark);
+  --color-accent-emerald-dark: var(--accent-emerald-dark);
   --color-status-green: var(--status-green);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-text: var(--btn-primary-text);
+  --color-btn-secondary-bg: var(--btn-secondary-bg);
+  --color-btn-secondary-text: var(--btn-secondary-text);
+  --color-btn-secondary-border: var(--btn-secondary-border);
+  --color-skeleton-base: var(--skeleton-base);
+  --color-skeleton-highlight: var(--skeleton-highlight);
+  --color-ring-offset: var(--ring-offset);
+  --color-ring-color: var(--ring-color);
+  --color-icon-color: var(--icon-color);
+  --color-icon-color-hover: var(--icon-color-hover);
+  --color-badge-bg: var(--badge-bg);
+  --color-badge-border: var(--badge-border);
+  --color-badge-text: var(--badge-text);
+  --color-divider: var(--divider);
+  --color-toast-bg: var(--toast-bg);
+  --color-toast-text: var(--toast-text);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
