@@ -35,15 +35,12 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md,css,html,yml,yaml}": [
-      "node scripts/attribution-guard.js"
+    "*.{js,jsx,ts,tsx,mjs,json,md,css,html,yml,yaml}": [
+      "node scripts/attribution-guard.js",
+      "prettier --write"
     ],
     "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md,css}": [
-      "prettier --write"
+      "eslint --fix"
     ]
   }
 }
