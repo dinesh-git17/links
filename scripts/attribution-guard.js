@@ -28,6 +28,17 @@ const FORBIDDEN_PATTERNS = [
   /\bopenai\b/i,
 ];
 
+// Whitelisted contexts where forbidden patterns are allowed (legitimate uses)
+const WHITELISTED_CONTEXTS = [
+  /LLM\s+Integration\s*\(/i, // e.g., "LLM Integration (OpenAI, Anthropic)"
+  /integration.*openai/i, // Technical skill mentions
+  /integration.*anthropic/i,
+  /api.*openai/i,
+  /api.*anthropic/i,
+  /sdk.*openai/i,
+  /sdk.*anthropic/i,
+];
+
 // Files to exclude from checking
 const EXCLUDED_FILES = new Set([
   'CLAUDE.md',
@@ -59,6 +70,16 @@ function shouldExclude(filepath) {
 }
 
 /**
+ * Check if a line matches a whitelisted context
+ */
+function isWhitelisted(line) {
+  for (const pattern of WHITELISTED_CONTEXTS) {
+    if (pattern.test(line)) return true;
+  }
+  return false;
+}
+
+/**
  * Check a file for forbidden patterns
  */
 function checkFile(filepath) {
@@ -76,6 +97,10 @@ function checkFile(filepath) {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
+
+    // Skip whitelisted contexts
+    if (isWhitelisted(line)) continue;
+
     for (const pattern of FORBIDDEN_PATTERNS) {
       const match = line.match(pattern);
       if (match) {

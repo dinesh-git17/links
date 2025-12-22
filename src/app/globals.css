@@ -34,3 +34,36 @@ body {
     padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 }
+
+/* Print styles for resume - minimal margins to account for browser header/footer */
+@page {
+  size: A4;
+  margin: 5mm 8mm 5mm 8mm;
+}
+
+@media print {
+  /* Force all animations to complete state */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Ensure content is visible */
+  .print-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Hide non-print elements */
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* Print color adjustments */
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
