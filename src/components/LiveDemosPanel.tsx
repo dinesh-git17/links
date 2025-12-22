@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronRight, Code2, FlaskConical, Globe } from 'lucide-react';
+import { ChevronRight, Code2, FlaskConical, Globe, MessageCircleQuestion } from 'lucide-react';
+import Link from 'next/link';
 import { type ReactElement } from 'react';
 
 export interface DemoLink {
@@ -11,6 +12,7 @@ export interface DemoLink {
   meta?: string;
   ariaLabel: string;
   isViewSource?: boolean;
+  isInternal?: boolean;
 }
 
 export interface LiveDemosPanelProps {
@@ -38,61 +40,101 @@ const demoLinks: DemoLink[] = [
     ariaLabel: 'View source code for this site on GitHub in new tab',
     isViewSource: true,
   },
+  {
+    label: 'FAQ',
+    href: '/faq',
+    icon: <MessageCircleQuestion size={20} aria-hidden="true" />,
+    ariaLabel: 'View frequently asked questions',
+    isInternal: true,
+  },
 ];
 
 interface DemoLinkRowProps {
   link: DemoLink;
   reduceMotion: boolean;
-  isLast: boolean;
+  hasDivider: boolean;
 }
 
-function DemoLinkRow({ link, reduceMotion, isLast }: DemoLinkRowProps): ReactElement {
-  return (
-    <li className={isLast ? 'border-t border-[color:var(--divider)]' : ''}>
-      <motion.a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group flex h-14 items-center gap-3 px-4 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[color:var(--ring-color)] ${
-          link.isViewSource ? 'opacity-[var(--view-source-opacity)] hover:opacity-100' : ''
-        }`}
+function DemoLinkRow({ link, reduceMotion, hasDivider }: DemoLinkRowProps): ReactElement {
+  const linkClassName = `group flex h-14 items-center gap-3 px-4 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[color:var(--ring-color)] ${
+    link.isViewSource ? 'opacity-[var(--view-source-opacity)] hover:opacity-100' : ''
+  }`;
+
+  const content = (
+    <>
+      <motion.span
+        className="text-[color:var(--icon-color)] transition-colors group-hover:text-[color:var(--icon-color-hover)]"
         initial={false}
-        whileHover={
-          reduceMotion
-            ? undefined
-            : {
-                backgroundColor: 'var(--demo-link-hover-bg)',
-              }
-        }
-        whileTap={
-          reduceMotion
-            ? undefined
-            : {
-                backgroundColor: 'var(--demo-link-tap-bg)',
-              }
-        }
-        transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
-        aria-label={link.ariaLabel}
       >
-        <motion.span
-          className="text-[color:var(--icon-color)] transition-colors group-hover:text-[color:var(--icon-color-hover)]"
+        {link.icon}
+      </motion.span>
+      <span className="flex-1 text-sm font-medium text-[color:var(--text-primary)]">
+        {link.label}
+      </span>
+      {link.meta && <span className="text-xs text-[color:var(--text-muted)]">{link.meta}</span>}
+      <motion.span
+        className="text-[color:var(--icon-color)] transition-colors group-hover:text-[color:var(--icon-color-hover)]"
+        initial={{ x: 0, opacity: 0.5 }}
+        whileHover={reduceMotion ? undefined : { x: 4, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      >
+        <ChevronRight size={16} aria-hidden="true" />
+      </motion.span>
+    </>
+  );
+
+  return (
+    <li className={hasDivider ? 'border-t border-[color:var(--divider)]' : ''}>
+      {link.isInternal ? (
+        <motion.div
           initial={false}
+          whileHover={
+            reduceMotion
+              ? undefined
+              : {
+                  backgroundColor: 'var(--demo-link-hover-bg)',
+                }
+          }
+          whileTap={
+            reduceMotion
+              ? undefined
+              : {
+                  backgroundColor: 'var(--demo-link-tap-bg)',
+                }
+          }
+          transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
         >
-          {link.icon}
-        </motion.span>
-        <span className="flex-1 text-sm font-medium text-[color:var(--text-primary)]">
-          {link.label}
-        </span>
-        {link.meta && <span className="text-xs text-[color:var(--text-muted)]">{link.meta}</span>}
-        <motion.span
-          className="text-[color:var(--icon-color)] transition-colors group-hover:text-[color:var(--icon-color-hover)]"
-          initial={{ x: 0, opacity: 0.5 }}
-          whileHover={reduceMotion ? undefined : { x: 4, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+          <Link href={link.href} className={linkClassName} aria-label={link.ariaLabel}>
+            {content}
+          </Link>
+        </motion.div>
+      ) : (
+        <motion.a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClassName}
+          initial={false}
+          whileHover={
+            reduceMotion
+              ? undefined
+              : {
+                  backgroundColor: 'var(--demo-link-hover-bg)',
+                }
+          }
+          whileTap={
+            reduceMotion
+              ? undefined
+              : {
+                  backgroundColor: 'var(--demo-link-tap-bg)',
+                }
+          }
+          transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
+          aria-label={link.ariaLabel}
         >
-          <ChevronRight size={16} aria-hidden="true" />
-        </motion.span>
-      </motion.a>
+          {content}
+        </motion.a>
+      )}
     </li>
   );
 }
@@ -113,7 +155,7 @@ export function LiveDemosPanel({ reduceMotion }: LiveDemosPanelProps): ReactElem
               key={link.href}
               link={link}
               reduceMotion={reduceMotion}
-              isLast={link.isViewSource === true}
+              hasDivider={link.isViewSource === true || link.isInternal === true}
             />
           ))}
         </ul>
