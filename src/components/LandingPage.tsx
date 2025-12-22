@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { FileText } from 'lucide-react';
 import { type ReactNode } from 'react';
 
 import { AnimatedAvatar } from './AnimatedAvatar';
@@ -105,13 +106,36 @@ export function LandingPage({ projects }: LandingPageProps): React.ReactElement 
             </motion.div>
           </motion.section>
 
-          {/* Primary CTA - Step 3 */}
-          <motion.div variants={activeItemVariants}>
-            <AnimatedCTA
-              href="/contact"
-              label="ping me"
-              reduceMotion={shouldReduceMotion ?? false}
-            />
+          {/* CTA Buttons - Step 3 */}
+          <motion.div className="flex w-full gap-3" variants={activeItemVariants}>
+            <motion.div
+              className="flex-1"
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              transition={{ delay: 0, type: 'spring', stiffness: 100, damping: 15 }}
+            >
+              <AnimatedCTA
+                href="/contact"
+                label="Ping Me"
+                reduceMotion={shouldReduceMotion ?? false}
+                variant="primary"
+              />
+            </motion.div>
+            <motion.div
+              className="flex-1"
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              transition={{ delay: 0.05, type: 'spring', stiffness: 100, damping: 15 }}
+            >
+              <AnimatedCTA
+                href="/resume"
+                label="Resume"
+                reduceMotion={shouldReduceMotion ?? false}
+                variant="secondary"
+                icon={<FileText size={16} aria-hidden="true" />}
+                ariaLabel="View Resume"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Project Cards - Step 4 */}
