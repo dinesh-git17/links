@@ -1,5 +1,7 @@
 export { AvatarGlow } from './AvatarGlow';
 export { HeroSection } from './HeroSection';
+export { IntroProvider, useIntro } from './IntroProvider';
+export { type IntroContextValue, type IntroProviderProps } from './IntroProvider';
 export { LiveDemosPanel } from './LiveDemosPanel';
 export { type DemoLink, type LiveDemosPanelProps } from './LiveDemosPanel';
 export { PrimaryCTA } from './PrimaryCTA';
@@ -11,6 +13,8 @@ export { type SkeletonProps } from './Skeleton';
 export { SocialGrid } from './SocialGrid';
 export { StatusIndicator } from './StatusIndicator';
 export { type StatusIndicatorProps } from './StatusIndicator';
+export { SystemIntro } from './SystemIntro';
+export { type SystemIntroProps } from './SystemIntro';
 export { ThemeProvider } from './ThemeProvider';
 export { type ThemeProviderProps } from './ThemeProvider';
 export { ThemeToggle } from './ThemeToggle';
