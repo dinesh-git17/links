@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { Inter } from 'next/font/google';
 import { Geist_Mono } from 'next/font/google';
 
+import { IntroProvider } from '@/components/IntroProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 import type { Metadata, Viewport } from 'next';
@@ -107,7 +108,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <IntroProvider>{children}</IntroProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
