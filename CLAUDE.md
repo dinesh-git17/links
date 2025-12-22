@@ -448,8 +448,8 @@ git branch -d feature/your-branch-name
 
 **Required Status Checks:**
 
-- `quality-checks` (lint, type-check, format, build)
-- `ci-summary` (aggregated CI status)
+- `Quality Checks` (lint, type-check, format, build)
+- `CI Summary` (aggregated CI status)
 
 **Merge Strategy:**
 
