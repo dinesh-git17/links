@@ -9,6 +9,7 @@ import {
   Globe,
   Heart,
   MessageCircleQuestion,
+  Snowflake,
 } from 'lucide-react';
 import Link from 'next/link';
 import { type ReactElement } from 'react';
@@ -42,6 +43,12 @@ const demoLinks: DemoLink[] = [
     href: 'https://debatelab.dineshd.dev',
     icon: <FlaskConical size={20} aria-hidden="true" />,
     ariaLabel: 'Open Debate Lab live website in new tab',
+  },
+  {
+    label: 'Holiday.EXE Demo',
+    href: 'https://holiday-exe.dineshd.dev',
+    icon: <Snowflake size={20} aria-hidden="true" />,
+    ariaLabel: 'Open Holiday.EXE demo website in new tab',
   },
   {
     label: 'View Source',
